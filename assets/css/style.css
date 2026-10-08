@@ -1,0 +1,94 @@
+body {
+    margin: 0;/*Remove as margens externas padrões de todos os elementos.*/
+    padding: 0;/*Remove as margens internas padrões de todos os elementos.*/
+}
+
+.game_board {
+    width: 100%;/*Largura de 100% da tela visível.*/
+    height: 500px;/*Altura de 500px.*/
+    border-bottom: 15px solid #4F4F4F;/*Linha sólida de 15px na cor cinza para simular o asfalto.*/
+    margin: 0 auto;/*Margem externa superior e inferior de 0 e laterais automáticas.*/
+    position: relative;/*Define a posição relativo para que os elementos internos sejam referenciados a ele.*/
+    overflow: hidden;/*Oculta qualquer conteúdo que ultrapasse os limites da tela do jogo.*/
+}
+
+.cenario {
+    width: 100%;/*Largura de 100% da tela visível.*/
+    height: 500px;/*Altura de 500px.*/
+    position: absolute;/*Posição abosluta em relação ao elemento pai.*/
+}
+
+.solo img {
+    width: 100%;/*Largura de 100% da tela visível.*/
+    height: calc(100vh - 500px);/*Calcula a altura com base no espaço já ocupado pelo game board.*/
+    background-size: cover;/*Redimensiona a imagem de fundo para cobrir 100% da área.*/
+}
+
+.predio {
+    width: 90px;/*Largura de 90px.*/
+    right: -80px;/*O prédio inicia fora da tela em 80px à direita.*/
+    bottom: 0;/*Mantém o prédio sempre na parte inferior do game board.*/
+    position: absolute;/*Posição absolute em relação ao elemento pai.*/
+    animation: predio-animation 2.0s infinite linear;/*Aplica a animação do prédio se movendo para a esquerda.*/
+}
+
+.spider {
+    width: 150px;/*Largura de 150px.*/
+    bottom: -20px;/*Posiciona o Spider um pouco mais abaixo da parte inferior do game board.*/
+    position: absolute;/*Posição absoluta em relação ao elemento pai.*/
+}
+
+.jump {
+    animation: jump 500ms ease-out;/*Aplica a animação de pulo com duração de 500ms.*/
+}
+
+.duende {
+    width: 200px;/*Largura de 200px.*/
+    position: absolute;/*Posição absoluta em relação ao elemento pai.*/
+    animation: duende-animation 15s infinite linear;/*Aplica a animação do Duende se movendo da direita para a esqueda.*/
+}
+
+/*Aqui vamos configurar a animação do prédio em movimento.*/
+@keyframes predio-animation {
+    from {
+        right: 0;/*Começa do lado direita do game board.*/
+    }
+
+    to {
+        right: 100%;/*Move o prédio até o final do lado esquerdo do game board.*/
+    }
+}
+
+/*Aqui vamos configurar a animação do pulo do spider.*/
+@keyframes jump {
+    0% {
+        bottom: 0; /*Começa no chão.*/
+    }
+
+    40% {
+        bottom: 180px; /*Sobe até 180px.*/
+    }
+
+    50% {
+        bottom: 180px;/*Mantém em 180px.*/
+    }
+
+    60% {
+        bottom: 180px; /*Ainda em 180px.*/
+    }
+
+    100% {
+        bottom: 0; /*Retorna ao chão.*/
+    }
+}
+
+/*Aqui vamos configurar a animação do duende.*/
+@keyframes duende-animation {
+    from {
+        right: -550px; /*Inicia fora da tela à direita.*/
+    }
+
+    to {
+        right: 100%; /*Move o duende até sair completamente pela esquerda.*/
+    }
+}
